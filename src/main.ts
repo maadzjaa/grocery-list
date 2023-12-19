@@ -7,23 +7,24 @@ interface Grocery {
 	id: number;
 }
 
-const groceries: Array<Grocery> = [
-	{
-		text: 'carrot',
-		quantity: 2,
-		completed: false,
-		id: 1,
-	},
-	{ text: 'apple', quantity: 3, completed: true, id: 2 },
-	{ text: 'banana', quantity: 8, completed: false, id: 3 },
-	{ text: 'cookies', quantity: undefined, completed: false, id: 4 },
-];
+let groceries: Array<Grocery> = [];
 const groceryList = document.querySelector('.list');
 const button = document.querySelector('.add-button');
 const input = document.querySelector('.text-input') as HTMLInputElement | null;
 
+function init() {
+	const groceriesElements = localStorage.getItem('groceries');
+	if (groceriesElements) {
+		const parsedGroceries = JSON.parse(groceriesElements);
+		console.log(parsedGroceries);
+		groceries = parsedGroceries;
+	}
+
+	renderGroceries();
+}
+init();
+
 // wyswietl elementy listy w ul
-renderGroceries();
 function renderGroceries() {
 	if (!groceryList) {
 		return;
@@ -53,6 +54,7 @@ button?.addEventListener('click', () => {
 	};
 
 	groceries.push(newGrocery);
+	localStorage.setItem('groceries', JSON.stringify(groceries));
 	input.value = '';
 	renderGroceries();
 });
