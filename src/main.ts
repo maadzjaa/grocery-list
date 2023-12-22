@@ -22,6 +22,10 @@ function init(): void {
 	}
 }
 
+function saveToLocalStorage(): void {
+	localStorage.setItem('groceries', JSON.stringify(groceries));
+}
+
 // wyswietl elementy listy w ul
 function renderGroceries(): void {
 	if (!groceryList) {
@@ -45,7 +49,8 @@ function renderGroceries(): void {
 
 function deleteGroceryItem(id: number): void {
 	groceries = groceries.filter((element) => element.id !== id);
-	localStorage.setItem('groceries', JSON.stringify(groceries));
+
+	saveToLocalStorage();
 	renderGroceries();
 }
 
@@ -63,7 +68,7 @@ function addGroceryItem(): void {
 	};
 
 	groceries.push(newGrocery);
-	localStorage.setItem('groceries', JSON.stringify(groceries));
+	saveToLocalStorage();
 	input.value = '';
 	renderGroceries();
 }
