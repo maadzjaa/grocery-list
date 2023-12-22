@@ -12,20 +12,18 @@ const groceryList = document.querySelector('.list');
 const button = document.querySelector('.add-button');
 const input = document.querySelector('.text-input') as HTMLInputElement | null;
 
-function init() {
+function init(): void {
 	const groceriesElements = localStorage.getItem('groceries');
+
 	if (groceriesElements) {
 		const parsedGroceries = JSON.parse(groceriesElements);
-		console.log(parsedGroceries);
 		groceries = parsedGroceries;
+		renderGroceries();
 	}
-
-	renderGroceries();
 }
-init();
 
 // wyswietl elementy listy w ul
-function renderGroceries() {
+function renderGroceries(): void {
 	if (!groceryList) {
 		return;
 	}
@@ -40,7 +38,7 @@ function renderGroceries() {
 	});
 }
 
-button?.addEventListener('click', () => {
+function addGroceryItem(): void {
 	if (!input?.value.trim()) {
 		input!.value = '';
 		return;
@@ -57,4 +55,8 @@ button?.addEventListener('click', () => {
 	localStorage.setItem('groceries', JSON.stringify(groceries));
 	input.value = '';
 	renderGroceries();
-});
+}
+
+button?.addEventListener('click', addGroceryItem);
+
+init();
