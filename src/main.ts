@@ -31,10 +31,19 @@ function renderGroceries(): void {
 	groceryList.innerHTML = '';
 	groceries.forEach((grocery) => {
 		const groceryLi = document.createElement('li');
-
 		groceryLi.textContent = grocery.text;
 
-		groceryList?.appendChild(groceryLi);
+		const groceryBtn = document.createElement('button');
+		groceryBtn.innerHTML = 'Delete';
+
+		groceryBtn.addEventListener('click', () => {
+			groceries = groceries.filter((element) => element.id !== grocery.id);
+			localStorage.setItem('groceries', JSON.stringify(groceries));
+			renderGroceries();
+		});
+
+		groceryLi.appendChild(groceryBtn);
+		groceryList?.appendChild(groceryLi); // ? - pobieramy z drzewa DOM i to moze byc nullem dlatego jest optional chaining
 	});
 }
 
