@@ -36,15 +36,17 @@ function renderGroceries(): void {
 		const groceryBtn = document.createElement('button');
 		groceryBtn.innerHTML = 'Delete';
 
-		groceryBtn.addEventListener('click', () => {
-			groceries = groceries.filter((element) => element.id !== grocery.id);
-			localStorage.setItem('groceries', JSON.stringify(groceries));
-			renderGroceries();
-		});
+		groceryBtn.addEventListener('click', () => deleteGroceryItem(grocery.id));
 
 		groceryLi.appendChild(groceryBtn);
 		groceryList?.appendChild(groceryLi); // ? - pobieramy z drzewa DOM i to moze byc nullem dlatego jest optional chaining
 	});
+}
+
+function deleteGroceryItem(id: number): void {
+	groceries = groceries.filter((element) => element.id !== id);
+	localStorage.setItem('groceries', JSON.stringify(groceries));
+	renderGroceries();
 }
 
 function addGroceryItem(): void {
