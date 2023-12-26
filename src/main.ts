@@ -39,9 +39,23 @@ function renderGroceries(): void {
 
 		const groceryBtn = document.createElement('button');
 		groceryBtn.innerHTML = 'Delete';
-
 		groceryBtn.addEventListener('click', () => deleteGroceryItem(grocery.id));
 
+		const groceryInput = document.createElement('input');
+		groceryInput.type = 'checkbox';
+		groceryInput.className = 'item-checked';
+
+		function check(): void {
+			groceryInput.checked = true;
+		}
+
+		function uncheck(): void {
+			groceryInput.checked = false;
+		}
+
+		groceryInput.addEventListener('click', check);
+
+		groceryLi.appendChild(groceryInput);
 		groceryLi.appendChild(groceryBtn);
 		groceryList?.appendChild(groceryLi); // ? - pobieramy z drzewa DOM i to moze byc nullem dlatego jest optional chaining
 	});
