@@ -76,11 +76,13 @@ function addGroceryItem(): void {
 		return;
 	}
 
+	const uniqueNumber = new Date().getTime();
+
 	const newGrocery = {
 		text: input.value,
 		quantity: 2,
 		completed: false,
-		id: groceries.length + 1,
+		id: uniqueNumber,
 	};
 
 	groceries.push(newGrocery);
