@@ -43,22 +43,24 @@ function renderGroceries(): void {
 
 		const groceryInput = document.createElement('input');
 		groceryInput.type = 'checkbox';
-		groceryInput.className = 'item-checked';
-
-		function check(): void {
-			groceryInput.checked = true;
+		groceryInput.checked = grocery.completed;
+		if (grocery.completed) {
+			groceryLi.className = 'item-completed';
 		}
-
-		function uncheck(): void {
-			groceryInput.checked = false;
-		}
-
-		groceryInput.addEventListener('click', check);
+		groceryInput.addEventListener('change', () => toggleCompletedStatus(grocery.id));
 
 		groceryLi.appendChild(groceryInput);
 		groceryLi.appendChild(groceryBtn);
 		groceryList?.appendChild(groceryLi); // ? - pobieramy z drzewa DOM i to moze byc nullem dlatego jest optional chaining
 	});
+}
+
+function toggleCompletedStatus(id: number): void {
+	const indexOfGroceryElement = groceries.findIndex((element) => element.id === id);
+	groceries[indexOfGroceryElement].completed = !groceries[indexOfGroceryElement].completed;
+
+	saveToLocalStorage();
+	renderGroceries();
 }
 
 function deleteGroceryItem(id: number): void {

@@ -2,6 +2,14 @@
 // 	background-color: red;
 // }
 
-.item-checked {
-	text-decoration: overline;
+.item-completed {
+	text-decoration: line-through;
 }
+
+// input:checked {
+// 	text-decoration: line-through;
+// }
+
+// li {
+// 	text-decoration: line-through;
+// }
