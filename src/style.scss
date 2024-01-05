@@ -1,15 +1,32 @@
-// body {
-// 	background-color: red;
-// }
+body {
+	background-color: rgb(243, 243, 222);
+}
+
+#app {
+	width: 500px;
+	height: 500px;
+	margin: 0 auto;
+	padding: 0 20px;
+	border: 1px dashed black;
+	border-radius: 5px;
+}
+
+.header-items {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
 
 .item-completed {
 	text-decoration: line-through;
 }
 
-// input:checked {
-// 	text-decoration: line-through;
-// }
+.list {
+	display: flex;
+	flex-direction: column;
+}
 
-// li {
-// 	text-decoration: line-through;
-// }
+li {
+	list-style-type: none;
+}

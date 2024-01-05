@@ -35,7 +35,9 @@ function renderGroceries(): void {
 	groceryList.innerHTML = '';
 	groceries.forEach((grocery) => {
 		const groceryLi = document.createElement('li');
-		groceryLi.textContent = grocery.text;
+
+		const groceryText = document.createElement('span');
+		groceryText.textContent = grocery.text;
 
 		const groceryBtn = document.createElement('button');
 		groceryBtn.innerHTML = 'Delete';
@@ -50,6 +52,7 @@ function renderGroceries(): void {
 		groceryInput.addEventListener('change', () => toggleCompletedStatus(grocery.id));
 
 		groceryLi.appendChild(groceryInput);
+		groceryLi.appendChild(groceryText);
 		groceryLi.appendChild(groceryBtn);
 		groceryList?.appendChild(groceryLi); // ? - pobieramy z drzewa DOM i to moze byc nullem dlatego jest optional chaining
 	});
