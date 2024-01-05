@@ -9,7 +9,8 @@ interface Grocery {
 
 let groceries: Array<Grocery> = [];
 const groceryList = document.querySelector('.list');
-const button = document.querySelector('.add-button');
+const addBtn = document.querySelector('.add-button');
+const clearBtn = document.querySelector('.clear-button');
 const input = document.querySelector('.text-input') as HTMLInputElement | null;
 
 function init(): void {
@@ -94,6 +95,14 @@ function addGroceryItem(): void {
 	renderGroceries();
 }
 
-button?.addEventListener('click', addGroceryItem);
+function clearGroceryList(): void {
+	groceries = [];
+
+	saveToLocalStorage();
+	renderGroceries();
+}
+
+addBtn?.addEventListener('click', addGroceryItem);
+clearBtn?.addEventListener('click', clearGroceryList);
 
 init();
