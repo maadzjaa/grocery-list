@@ -40,21 +40,26 @@ function renderGroceries(): void {
 		const groceryText = document.createElement('span');
 		groceryText.textContent = grocery.text;
 
-		const groceryBtn = document.createElement('button');
-		groceryBtn.innerHTML = 'Delete';
-		groceryBtn.addEventListener('click', () => deleteGroceryItem(grocery.id));
+		const groceryDeleteBtn = document.createElement('button');
+		groceryDeleteBtn.innerHTML = 'Delete';
+		groceryDeleteBtn.addEventListener('click', () => deleteGroceryItem(grocery.id));
 
-		const groceryInput = document.createElement('input');
-		groceryInput.type = 'checkbox';
-		groceryInput.checked = grocery.completed;
+		const groceryEditBtn = document.createElement('button');
+		groceryEditBtn.innerHTML = 'Edit';
+		groceryEditBtn.addEventListener('click', () => editGroceryItem(grocery.id));
+
+		const groceryCheckbox = document.createElement('input');
+		groceryCheckbox.type = 'checkbox';
+		groceryCheckbox.checked = grocery.completed;
 		if (grocery.completed) {
 			groceryLi.className = 'item-completed';
 		}
-		groceryInput.addEventListener('change', () => toggleCompletedStatus(grocery.id));
+		groceryCheckbox.addEventListener('change', () => toggleCompletedStatus(grocery.id));
 
-		groceryLi.appendChild(groceryInput);
+		groceryLi.appendChild(groceryCheckbox);
 		groceryLi.appendChild(groceryText);
-		groceryLi.appendChild(groceryBtn);
+		groceryLi.appendChild(groceryDeleteBtn);
+		groceryLi.appendChild(groceryEditBtn);
 		groceryList?.appendChild(groceryLi); // ? - pobieramy z drzewa DOM i to moze byc nullem dlatego jest optional chaining
 	});
 }
@@ -69,6 +74,19 @@ function toggleCompletedStatus(id: number): void {
 
 function deleteGroceryItem(id: number): void {
 	groceries = groceries.filter((element) => element.id !== id);
+
+	saveToLocalStorage();
+	renderGroceries();
+}
+
+function editGroceryItem(id: number): void {
+	const indexOfGroceryElement = groceries.findIndex((element) => element.id === id);
+
+	const editedText = prompt('Make a change:', groceries[indexOfGroceryElement].text);
+	if (!editedText?.trim()) {
+		return;
+	}
+	groceries[indexOfGroceryElement].text = editedText;
 
 	saveToLocalStorage();
 	renderGroceries();
