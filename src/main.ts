@@ -99,12 +99,14 @@ function addGroceryItem(): void {
 	}
 
 	const uniqueNumber = new Date().getTime();
+	const todaysDate = new Date().toISOString();
 
 	const newGrocery = {
 		text: input.value,
 		quantity: 2,
 		completed: false,
 		id: uniqueNumber,
+		date: todaysDate,
 	};
 
 	groceries.push(newGrocery);
