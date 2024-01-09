@@ -38,6 +38,10 @@ button:hover {
 	justify-content: center;
 	gap: 10px;
 	font-size: 2rem;
+
+	.shopping-emoji {
+		font-size: 3rem;
+	}
 }
 
 .input-container {
@@ -54,30 +58,30 @@ button:hover {
 	}
 }
 
-.item-completed {
-	text-decoration: line-through;
-}
-
 .ul-container {
 	width: 80%;
 	margin: 0 auto;
 
-	ul {
-		padding: 0;
+	.item-completed {
+		text-decoration: line-through;
 	}
 
-	li {
-		list-style-type: none;
-		font-size: 1.6rem;
-		input {
-			margin: 10px 15px;
-		}
-		button {
-			margin: 10px 5px;
-		}
+	ul {
+		padding: 0;
 
-		span {
-			margin: 10px 10px;
+		li {
+			list-style-type: none;
+			font-size: 1.6rem;
+			input {
+				margin: 10px 15px;
+			}
+			button {
+				margin: 10px 5px;
+			}
+
+			span {
+				margin: 10px 10px;
+			}
 		}
 	}
 }
@@ -88,9 +92,4 @@ footer {
 	h3 {
 		font-size: 2rem;
 	}
-}
-
-.shopping-emoji {
-	font-size: 200px;
-	font-size: 2rem;
 }
