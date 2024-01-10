@@ -8,7 +8,7 @@ interface Grocery {
 }
 
 let groceries: Array<Grocery> = [];
-const groceryList = document.querySelector('.list');
+const groceryList = document.querySelector('#list');
 const addBtn = document.querySelector('#add-button');
 const clearBtn = document.querySelector('#clear-button');
 const input = document.querySelector('.text-input') as HTMLInputElement | null;

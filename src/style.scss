@@ -80,10 +80,11 @@ body {
 	}
 }
 
-.list {
+.list-container {
 	width: 80%;
 	margin: 0 auto;
 	padding: 0;
+
 	.item-completed {
 		text-decoration: line-through;
 	}
