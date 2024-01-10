@@ -40,6 +40,7 @@ function renderGroceries(): void {
 
 		const groceryText = document.createElement('span');
 		groceryText.textContent = grocery.text;
+		groceryText.className = 'list-item-text';
 
 		const groceryDeleteBtn = document.createElement('button');
 		groceryDeleteBtn.innerHTML = 'Delete';

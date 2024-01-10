@@ -85,12 +85,13 @@ body {
 	margin: 0 auto;
 	padding: 0;
 
-	.item-completed {
+	.item-completed > .list-item-text {
 		text-decoration: line-through;
 	}
 
 	.list-item {
 		display: flex;
+		align-items: baseline;
 		gap: 10px;
 		list-style-type: none;
 		font-size: 1.6rem;
