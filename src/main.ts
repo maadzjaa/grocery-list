@@ -45,15 +45,18 @@ function renderGroceries(): void {
 		const groceryDeleteBtn = document.createElement('button');
 		groceryDeleteBtn.innerHTML = 'Delete';
 		groceryDeleteBtn.className = 'delete-btn';
+		groceryDeleteBtn.classList.add('default-btn');
 		groceryDeleteBtn.addEventListener('click', () => deleteGroceryItem(grocery.id));
 
 		const groceryEditBtn = document.createElement('button');
 		groceryEditBtn.innerHTML = 'Edit';
 		groceryEditBtn.className = 'edit-btn';
+		groceryEditBtn.classList.add('default-btn');
 		groceryEditBtn.addEventListener('click', () => editGroceryItem(grocery.id));
 
 		const groceryCheckbox = document.createElement('input');
 		groceryCheckbox.type = 'checkbox';
+		groceryCheckbox.className = 'list-item-checkbox';
 		groceryCheckbox.checked = grocery.completed;
 		if (grocery.completed) {
 			groceryLi.classList.add('item-completed');
@@ -62,8 +65,8 @@ function renderGroceries(): void {
 
 		groceryLi.appendChild(groceryCheckbox);
 		groceryLi.appendChild(groceryText);
-		groceryLi.appendChild(groceryDeleteBtn);
 		groceryLi.appendChild(groceryEditBtn);
+		groceryLi.appendChild(groceryDeleteBtn);
 		groceryList?.appendChild(groceryLi); // ? - pobieramy z drzewa DOM i to moze byc nullem dlatego jest optional chaining
 	});
 }
