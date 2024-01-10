@@ -10,10 +10,10 @@ body {
 	font-size: 1.6rem;
 }
 
-#app {
+.main-container {
 	width: 500px;
 	height: 700px;
-	margin: 0 auto;
+	margin: 20px auto;
 	padding: 0 20px;
 	border: 1px dashed black;
 	border-radius: 5px;
@@ -112,7 +112,7 @@ body {
 		color: currentColor;
 		width: 1.15em;
 		height: 1.15em;
-		border: 0.15em solid currentColor;
+		border: 0.1em solid currentColor;
 		border-radius: 0.15em;
 		transform: translateY(-0.075em);
 	}
@@ -131,10 +131,12 @@ body {
 	}
 }
 
-footer {
+.footer-container {
 	width: 100%;
 	text-align: center;
-	h3 {
+
+	.footer-heading {
+		padding: 20px;
 		font-size: 2rem;
 	}
 }
