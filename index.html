@@ -14,16 +14,14 @@
 
 <body>
   <div id="app">
-    <header>
-      <div class="header-container">
+    <header class="header-container">
         <span class="shopping-emoji">&#128722;</span>
         <h1>Grocery list</h1>
-      </div>
     </header>
     <div class="input-container">
       <input class="text-input" type="text">
-      <button class="add-button">Add</button>
-      <button class="clear-button">Clear list</button>
+      <button class="default-btn" id="add-button">Add</button>
+      <button class="default-btn" id="clear-button">Clear list</button>
     </div>
     <div class="ul-container">
       <ul class="list">
@@ -31,7 +29,7 @@
       </ul>
     </div>
     <footer>
-      <h3>Have a great day! <span class="heart emoji">&#128151;</span></h3>
+      <h3 class="heading-footer">Have a great day! <span class="heart emoji">&#128151;</span></h3>
     </footer>
   </div>
   <script type="module" src="/src/main.ts"></script>

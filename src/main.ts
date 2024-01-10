@@ -9,8 +9,8 @@ interface Grocery {
 
 let groceries: Array<Grocery> = [];
 const groceryList = document.querySelector('.list');
-const addBtn = document.querySelector('.add-button');
-const clearBtn = document.querySelector('.clear-button');
+const addBtn = document.querySelector('#add-button');
+const clearBtn = document.querySelector('#clear-button');
 const input = document.querySelector('.text-input') as HTMLInputElement | null;
 
 function init(): void {
@@ -36,23 +36,26 @@ function renderGroceries(): void {
 	groceryList.innerHTML = '';
 	groceries.forEach((grocery) => {
 		const groceryLi = document.createElement('li');
+		groceryLi.className = 'list-item';
 
 		const groceryText = document.createElement('span');
 		groceryText.textContent = grocery.text;
 
 		const groceryDeleteBtn = document.createElement('button');
 		groceryDeleteBtn.innerHTML = 'Delete';
+		groceryDeleteBtn.className = 'delete-btn';
 		groceryDeleteBtn.addEventListener('click', () => deleteGroceryItem(grocery.id));
 
 		const groceryEditBtn = document.createElement('button');
 		groceryEditBtn.innerHTML = 'Edit';
+		groceryEditBtn.className = 'edit-btn';
 		groceryEditBtn.addEventListener('click', () => editGroceryItem(grocery.id));
 
 		const groceryCheckbox = document.createElement('input');
 		groceryCheckbox.type = 'checkbox';
 		groceryCheckbox.checked = grocery.completed;
 		if (grocery.completed) {
-			groceryLi.className = 'item-completed';
+			groceryLi.classList.add('item-completed');
 		}
 		groceryCheckbox.addEventListener('change', () => toggleCompletedStatus(grocery.id));
 
